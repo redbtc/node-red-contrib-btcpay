@@ -1,7 +1,7 @@
 {
-  "name": "node-red-contrib-MY_NODESET_NAME",
-  "version": "0.2.0",
-  "description": "Description of the node set here",
+  "name": "node-red-contrib-btcpay",
+  "version": "0.1.0",
+  "description": "Node-RED nodes to talk to BTCPay Server",
   "scripts": {
     "add-node": "node ./utils/add-node.js",
     "copy": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
