@@ -32,21 +32,25 @@ const nodeInit: NodeInitializer = (RED): void => {
     credentials: btcpayApiConfigCredentials,
   });
 
-  RED.httpAdmin.get("/btcpay/gen-priv-key/", (_req, res) => {
-    const privKey = crypto.generate_keypair().getPrivate("hex");
-    res.send(privKey);
-  });
-
   RED.httpAdmin.post("/btcpay/pair-client/", async (req, res) => {
     try {
+      const privKey = crypto.generate_keypair().getPrivate("hex");
       const resPair = await new BtcpayClient(
-        req.params.url,
-        crypto.load_keypair(Buffer.from(req.params.privKey, "hex")),
+        req.body.host,
+        crypto.load_keypair(Buffer.from(privKey, "hex")),
         ""
-      ).pairClient(req.params.pairCode);
-      res.send(resPair.merchant);
+      ).pairClient(req.body.pairCode);
+      res.send({
+        privKey,
+        token: resPair.merchant,
+      });
     } catch (err) {
-      res.status(500).send(err.toString());
+      const errMsg = err.message;
+      if (errMsg === "pairing code is not valid") {
+        res.status(400).send(errMsg);
+      } else {
+        res.status(500).send(errMsg);
+      }
     }
   });
 };

@@ -148,7 +148,7 @@ export class BtcpayClient {
     const body = JSON.stringify(payload);
     const headers = Object.assign({}, commonHeaders);
 
-    const response = await fetch(uri, { headers, body });
+    const response = await fetch(uri, { headers, body, method: "post" });
     const respJson = (await response.json()) as ApiResponse;
     return respJson.data;
   }

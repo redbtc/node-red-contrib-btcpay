@@ -36,7 +36,7 @@ const nodeInit: NodeInitializer = (RED): void => {
     }
 
     const clientNode = RED.nodes.getNode(config.client) as BtcpayApiConfigNode;
-    if (!clientNode.client) {
+    if (!clientNode || !clientNode.client) {
       this.status(statuses.misconfigured);
       return;
     }
@@ -44,19 +44,15 @@ const nodeInit: NodeInitializer = (RED): void => {
     const btcpayClient = clientNode.client;
 
     this.on("input", async (msg: BtcpayMessage, send, done) => {
-      let method = config.method;
-      if (!method && (msg.method === "GET" || msg.method === "POST")) {
-        method = msg.method;
-      } else {
-        done(new Error("Invalid Method: " + msg.method));
+      const method = config.method || msg.method;
+      if (method !== "GET" && method !== "POST") {
+        done(new Error("Invalid Method: " + method));
         return;
       }
 
-      let path = config.path;
-      if (!path && typeof msg.path === "string") {
-        path = msg.path;
-      } else {
-        done(new Error("Invalid Path: " + msg.path));
+      const path = config.path || msg.path;
+      if (typeof path !== "string") {
+        done(new Error("Invalid Path: " + path));
         return;
       }
 
@@ -82,6 +78,8 @@ const nodeInit: NodeInitializer = (RED): void => {
     this.on("close", () => {
       this.status({});
     });
+
+    this.status(statuses.idle);
   }
 
   RED.nodes.registerType("btcpay-api", BtcpayApiNodeConstructor);
