@@ -1,0 +1,37 @@
+<script type="text/html" data-template-name="btcpay-api-config">
+  <div class="form-row">
+    <label for="node-config-input-host"><i class="icon-tag"></i> Host</label>
+    <input type="text" id="node-config-input-host">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-privKey"><i class="icon-tag"></i> Private Key</label>
+    <input type="text" id="node-config-input-privKey">
+    <div id="btcpayGenKeyContainer">
+      <button
+        type="button"
+        id="btcpayGenKey"
+        style="padding: 6px 14px;  margin-top: 6px;margin-left: 104px;"
+        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        Generate New
+      </button>
+    </div>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-token"><i class="icon-tag"></i> Token</label>
+    <input type="text" id="node-config-input-token">
+    <div id="btcpayPairContainer">
+      <button
+        type="button"
+        id="btcpayPair"
+        style="padding: 6px 14px;  margin-top: 6px;margin-left: 104px;"
+        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        Pair client
+      </button>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+</script>

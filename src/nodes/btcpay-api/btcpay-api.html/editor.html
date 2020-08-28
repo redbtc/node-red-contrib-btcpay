@@ -1,0 +1,22 @@
+<script type="text/html" data-template-name="btcpay-api">
+  <div class="form-row">
+    <label for="node-input-client"><i class="fa fa-plug"></i> Client</label>
+    <input type="text" id="node-input-client"/>
+  </div>
+  <div class="form-row">
+    <label for="node-input-method"><i class="icon-tag"></i> Method</label>
+    <select id="node-input-method" style="width:70%;">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="">via msg.method</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-path"><i class="icon-tag"></i> Path</label>
+    <input type="text" id="node-input-path" placeholder="example: /invoices">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>

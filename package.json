@@ -20,15 +20,23 @@
   "license": "MIT",
   "node-red": {
     "nodes": {
-      "transform-text": "./dist/nodes/transform-text/transform-text.js"
+      "btcpay-api": "./dist/nodes/btcpay-api/btcpay-api.js",
+      "btcpay-api-config": "./dist/nodes/btcpay-api-config/btcpay-api-config.js"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "elliptic": "^6.5.3",
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/bs58": "^4.0.1",
+    "@types/elliptic": "^6.4.12",
     "@types/express": "^4.17.7",
     "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
+    "@types/node-fetch": "^2.5.7",
     "@types/node-red": "^1.1.0",
     "@types/node-red-node-test-helper": "^0.2.0",
     "@types/sinon": "^9.0.4",
