@@ -64,7 +64,6 @@ const makeConfigItem = (nodeType) => ({
   plugins: makePlugins(nodeType),
   watch: {
     clearScreen: false,
-    include: `src/nodes/${nodeType}/${nodeType}.html/*.html`,
   },
 });
 
