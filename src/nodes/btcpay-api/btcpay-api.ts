@@ -67,12 +67,14 @@ const nodeInit: NodeInitializer = (RED): void => {
         const resData = await btcpayClient.signedRequest(method, path, payload);
         this.status(statuses.idle);
         msg.payload = resData;
-        send(msg);
-        done();
       } catch (e) {
         this.status(statuses.error);
         done(e);
+        return;
       }
+
+      send(msg);
+      done();
     });
 
     this.on("close", () => {

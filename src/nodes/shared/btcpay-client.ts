@@ -55,12 +55,11 @@ export class BtcpayClient {
       pairingCode: code,
     };
 
-    return this.unsignedPostRequest("/tokens", payload).then((data) => {
-      const d = (data as { facade: string; token: string }[])[0];
-      const res: Record<string, string> = {};
-      res[d.facade] = d.token;
-      return res;
-    });
+    const data = await this.unsignedPostRequest("/tokens", payload);
+    const d = (data as { facade: string; token: string }[])[0];
+    const res: Record<string, string> = {};
+    res[d.facade] = d.token;
+    return res;
   }
 
   public signedRequest(

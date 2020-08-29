@@ -3,6 +3,7 @@ import { BtcpayApiConfigNode, BtcpayApiConfigNodeDef } from "./modules/types";
 import { btcpayApiConfigCredentials } from "./modules/config";
 import { BtcpayClient } from "../shared/btcpay-client";
 import { Cryptography as crypto } from "../shared/cryptography";
+import { FetchError } from "node-fetch";
 
 const nodeInit: NodeInitializer = (RED): void => {
   function BtcpayApiConfigNodeConstructor(
@@ -45,11 +46,14 @@ const nodeInit: NodeInitializer = (RED): void => {
         token: resPair.merchant,
       });
     } catch (err) {
-      const errMsg = err.message;
-      if (errMsg === "pairing code is not valid") {
-        res.status(400).send(errMsg);
+      if (err instanceof FetchError) {
+        res.status(400).send(err.message);
       } else {
-        res.status(500).send(errMsg);
+        if (err.message === "pairing code is not valid") {
+          res.status(400).send(err.message);
+        } else {
+          res.status(500).send(err.message);
+        }
       }
     }
   });
