@@ -17,7 +17,14 @@ RED.nodes.registerType<BtcpayApiEditorNodeProperties>("btcpay-api", {
   icon: "btcpay-logo.svg",
   paletteLabel: "btcpay api",
   label: function () {
-    return this.name || "btcpay api";
+    if (this.name) {
+      return this.name;
+    }
+    return (
+      this.method +
+      " " +
+      (this.path.length > 20 ? this.path.substr(0, 20) + "…" : this.path)
+    );
   },
   oneditsave: function () {
     let val = $("#node-input-path").val()?.toString() || "";
