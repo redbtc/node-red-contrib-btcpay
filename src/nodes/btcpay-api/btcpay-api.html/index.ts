@@ -4,8 +4,8 @@ import { BtcpayApiEditorNodeProperties } from "./modules/types";
 declare const RED: EditorRED;
 
 RED.nodes.registerType<BtcpayApiEditorNodeProperties>("btcpay-api", {
-  category: "function",
-  color: "#a6bbcf",
+  category: "network",
+  color: "#CEDC21",
   defaults: {
     method: { value: "GET" },
     path: { value: "", validate: (val) => val.length > 1 },
@@ -14,7 +14,7 @@ RED.nodes.registerType<BtcpayApiEditorNodeProperties>("btcpay-api", {
   },
   inputs: 1,
   outputs: 1,
-  icon: "file.png",
+  icon: "btcpay-logo.svg",
   paletteLabel: "btcpay api",
   label: function () {
     return this.name || "btcpay api";
