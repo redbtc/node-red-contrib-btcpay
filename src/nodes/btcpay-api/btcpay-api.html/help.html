@@ -1,3 +1,45 @@
 <script type="text/html" data-help-name="btcpay-api">
-  <p>Node description goes here.</p>
+  <p>Makes requests to BTCPay API and outputs the response.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">
+      method <span class="property-type">string</span>
+    </dt>
+    <dd>
+      If not configured in the node, this optional property sets the HTTP method of the API request.
+      Must be one of <code>GET</code>, <code>PUT</code>, <code>POST</code> or <code>DELETE</code>.
+    </dd>
+
+    <dt class="optional">
+      path <span class="property-type">string</span>
+    </dt>
+    <dd>
+      If not configured in the node, this optional property sets the path of the API request.
+    </dd>
+
+    <dt class="optional">
+      payload <span class="property-type">object</span>
+    </dt>
+    <dd>
+      Sent as the body of the API request.
+    </dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>
+      payload <span class="property-type">object</span>
+    </dt>
+    <dd>
+      The BTCPay API response's data.
+    </dd>
+  </dl>
+
+  <h3>References</h3>
+  <ul>
+    <li><a href="https://github.com/alexk111/node-red-contrib-btcpay#making-requests">Making request</a> - description of how to make API requests</li>
+    <li><a href="https://bitpay.com/api/#rest-api-resources">BitPay API resources</a> - description of BitPay API resources and endpoints</li>
+    <li><a href="https://github.com/alexk111/node-red-contrib-btcpay">GitHub</a> - project home on GitHub</li>
+  </ul>
 </script>
