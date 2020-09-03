@@ -14,7 +14,7 @@ RED.nodes.registerType<
   category: "config",
   defaults: {
     name: { value: "" },
-    host: { value: "", required: true },
+    url: { value: "", required: true },
   },
   credentials: btcpayApiConfigCredentials,
   label: function () {
@@ -27,7 +27,7 @@ RED.nodes.registerType<
       $.post({
         url: "btcpay/pair-client/",
         data: {
-          host: $("#node-config-input-host").val(),
+          url: $("#node-config-input-url").val(),
           pairCode: $("#btcpayPairCode").val(),
         },
       })
@@ -65,16 +65,16 @@ RED.nodes.registerType<
     };
 
     const updPairControl = () => {
-      const host = $("#node-config-input-host").val();
+      const url = $("#node-config-input-url").val();
       const pairCode = $("#btcpayPairCode").val();
-      const canPair = host && pairCode;
+      const canPair = url && pairCode;
       $("#btcpayPair").prop("disabled", !canPair);
       $("#btcpayPairContainer").attr("style", !canPair ? "opacity:0.5" : "");
     };
 
     /** Events **/
 
-    $("#node-config-input-host,#btcpayPairCode").on("keyup change", () => {
+    $("#node-config-input-url,#btcpayPairCode").on("keyup change", () => {
       updPairControl();
     });
 

@@ -11,9 +11,8 @@ const nodeInit: NodeInitializer = (RED): void => {
     config: BtcpayApiConfigNodeDef
   ): void {
     RED.nodes.createNode(this, config);
-
     if (
-      config.host &&
+      config.url &&
       this.credentials &&
       this.credentials.privKey &&
       this.credentials.token
@@ -22,7 +21,7 @@ const nodeInit: NodeInitializer = (RED): void => {
         Buffer.from(this.credentials.privKey, "hex")
       );
       this.client = new BtcpayClient(
-        config.host,
+        config.url,
         keypair,
         this.credentials.token
       );
@@ -37,7 +36,7 @@ const nodeInit: NodeInitializer = (RED): void => {
     try {
       const privKey = crypto.generate_keypair().getPrivate("hex");
       const resPair = await new BtcpayClient(
-        req.body.host,
+        req.body.url,
         crypto.load_keypair(Buffer.from(privKey, "hex")),
         ""
       ).pairClient(req.body.pairCode);

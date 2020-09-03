@@ -1,5 +1,5 @@
 export interface BtcpayApiConfigOptions {
-  host: string;
+  url: string;
 }
 
 export interface BtcpayApiConfigCredentials {
