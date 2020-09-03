@@ -2,7 +2,7 @@
 // The btcpay-client.ts partially uses code from https://github.com/btcpayserver/node-btcpay/blob/master/src/core/client.ts
 // which was modified and optimized for generic api calls
 
-import fetch from "node-fetch";
+import fetch, { Response } from "node-fetch";
 import elliptic from "elliptic";
 import qs from "querystring";
 
@@ -92,6 +92,14 @@ export class BtcpayClient {
     };
   }
 
+  private async parseResponse(response: Response) {
+    if (response.ok) {
+      return (await response.json()) as ApiResponse;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
+
   private async signedGetRequest(
     path: string,
     payload: BtcpayClientPayload = {}
@@ -108,7 +116,7 @@ export class BtcpayClient {
     );
 
     const response = await fetch(uri + qPayload, { headers });
-    const respJson = (await response.json()) as ApiResponse;
+    const respJson = await this.parseResponse(response);
     return respJson.data;
   }
 
@@ -141,7 +149,7 @@ export class BtcpayClient {
     );
 
     const response = await fetch(uri, { headers, body, method: "post" });
-    const respJson = (await response.json()) as ApiResponse;
+    const respJson = await this.parseResponse(response);
     return respJson.data;
   }
 
@@ -160,7 +168,7 @@ export class BtcpayClient {
     );
 
     const response = await fetch(uri, { headers, body, method: "put" });
-    const respJson = (await response.json()) as ApiResponse;
+    const respJson = await this.parseResponse(response);
     return respJson.data;
   }
 
@@ -179,7 +187,7 @@ export class BtcpayClient {
     );
 
     const response = await fetch(uri, { headers, body, method: "delete" });
-    const respJson = (await response.json()) as ApiResponse;
+    const respJson = await this.parseResponse(response);
     return respJson.data;
   }
 
