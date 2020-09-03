@@ -14,7 +14,6 @@ RED.nodes.registerType<
   category: "config",
   defaults: {
     name: { value: "" },
-    url: { value: "", required: true },
   },
   credentials: btcpayApiConfigCredentials,
   label: function () {

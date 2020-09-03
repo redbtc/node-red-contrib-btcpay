@@ -12,8 +12,8 @@ const nodeInit: NodeInitializer = (RED): void => {
   ): void {
     RED.nodes.createNode(this, config);
     if (
-      config.url &&
       this.credentials &&
+      this.credentials.url &&
       this.credentials.privKey &&
       this.credentials.token
     ) {
@@ -21,7 +21,7 @@ const nodeInit: NodeInitializer = (RED): void => {
         Buffer.from(this.credentials.privKey, "hex")
       );
       this.client = new BtcpayClient(
-        config.url,
+        this.credentials.url,
         keypair,
         this.credentials.token
       );
