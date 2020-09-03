@@ -8,7 +8,7 @@ RED.nodes.registerType<BtcpayApiEditorNodeProperties>("btcpay-api", {
   color: "#CEDC21",
   defaults: {
     method: { value: "GET" },
-    path: { value: "", validate: (val) => val.length > 1 },
+    path: { value: "" },
     client: { value: "", type: "btcpay-api-config", required: true },
     name: { value: "" },
   },
