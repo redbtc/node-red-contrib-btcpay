@@ -43,7 +43,23 @@ To make requests using the BTCPay API node, set the http method and the path to 
 
 After executing a request the node returns a message with the response data set to `msg.payload`.
 
-### API Reference
+### Creating Invoices
+
+This example enables to create an invoice with params specified in the "Invoice params" node by clicking the inject button. The "Invoice URL" node outputs the url of the new invoice to Debug window.
+
+![BTCPay Invoice Creator](examples/btcpay-invoice-creator.png)
+
+Flow json for Node-RED: [btcpay-invoice-creator.json](examples/btcpay-invoice-creator.json)
+
+### Handling Instant Payment Notifications (IPN)
+
+This example implements an IPN handler. It checks if the invoice status is either "confirmed" or "complete" and outputs the invoice data to Debug window. As the incoming data cannot be trusted, it first fetches the invoice data via API.
+
+![BTCPay IPN Handler](examples/btcpay-ipn-handler.png)
+
+Flow json for Node-RED: [btcpay-ipn-handler.json](examples/btcpay-ipn-handler.json)
+
+## API Reference
 
 BTCPay's API mimics Bitpay's one. The API Reference: https://bitpay.com/api/#rest-api-resources
 
