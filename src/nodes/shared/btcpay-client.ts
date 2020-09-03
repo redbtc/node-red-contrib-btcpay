@@ -63,7 +63,7 @@ export class BtcpayClient {
   }
 
   public signedRequest(
-    method: "GET" | "POST",
+    method: "GET" | "POST" | "PUT" | "DELETE",
     path: string,
     payload: BtcpayClientPayload = {}
   ): Promise<ClientResponse> {
@@ -73,6 +73,12 @@ export class BtcpayClient {
       }
       case "POST": {
         return this.signedPostRequest(path, payload);
+      }
+      case "PUT": {
+        return this.signedPutRequest(path, payload);
+      }
+      case "DELETE": {
+        return this.signedDeleteRequest(path, payload);
       }
     }
   }
@@ -135,6 +141,44 @@ export class BtcpayClient {
     );
 
     const response = await fetch(uri, { headers, body, method: "post" });
+    const respJson = (await response.json()) as ApiResponse;
+    return respJson.data;
+  }
+
+  private async signedPutRequest(
+    path: string,
+    payload: BtcpayClientPayload = {}
+  ): Promise<ClientResponse> {
+    payload.token = this.token;
+
+    const uri = this.host + path;
+    const body = JSON.stringify(payload);
+    const headers = Object.assign(
+      {},
+      commonHeaders,
+      this.createSignedHeaders(uri, body)
+    );
+
+    const response = await fetch(uri, { headers, body, method: "put" });
+    const respJson = (await response.json()) as ApiResponse;
+    return respJson.data;
+  }
+
+  private async signedDeleteRequest(
+    path: string,
+    payload: BtcpayClientPayload = {}
+  ): Promise<ClientResponse> {
+    payload.token = this.token;
+
+    const uri = this.host + path;
+    const body = JSON.stringify(payload);
+    const headers = Object.assign(
+      {},
+      commonHeaders,
+      this.createSignedHeaders(uri, body)
+    );
+
+    const response = await fetch(uri, { headers, body, method: "delete" });
     const respJson = (await response.json()) as ApiResponse;
     return respJson.data;
   }

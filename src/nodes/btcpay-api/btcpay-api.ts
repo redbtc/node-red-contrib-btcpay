@@ -45,7 +45,12 @@ const nodeInit: NodeInitializer = (RED): void => {
 
     this.on("input", async (msg: BtcpayMessage, send, done) => {
       const method = config.method || msg.method;
-      if (method !== "GET" && method !== "POST") {
+      if (
+        method !== "GET" &&
+        method !== "POST" &&
+        method !== "PUT" &&
+        method !== "DELETE"
+      ) {
         done(new Error("Invalid Method: " + method));
         return;
       }

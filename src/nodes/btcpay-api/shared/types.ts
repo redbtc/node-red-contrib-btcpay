@@ -1,5 +1,5 @@
 export interface BtcpayApiOptions {
   client: string;
-  method: "GET" | "POST" | "";
+  method: "GET" | "POST" | "PUT" | "DELETE" | "";
   path: string;
 }
