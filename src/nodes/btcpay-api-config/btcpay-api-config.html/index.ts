@@ -18,7 +18,7 @@ RED.nodes.registerType<
   },
   credentials: btcpayApiConfigCredentials,
   label: function () {
-    return this.name || "btcpay api config";
+    return this.name || "BTCPay API client config";
   },
   oneditprepare: function () {
     /** Functions **/
@@ -81,6 +81,19 @@ RED.nodes.registerType<
     $("#btcpayPair").on("click", (evt) => {
       evt.preventDefault();
       pairClient();
+    });
+
+    $(".btcpay-toggle-password").on("click", (evt) => {
+      evt.preventDefault();
+      const $toggle = $(evt.target);
+      $toggle.toggleClass("fa-eye fa-eye-slash");
+      const $input = $($toggle.data("toggle"));
+      const inpType = $input.attr("type");
+      if (inpType === "password") {
+        $input.attr("type", "text");
+      } else if (inpType === "text") {
+        $input.attr("type", "password");
+      }
     });
 
     /** Init **/

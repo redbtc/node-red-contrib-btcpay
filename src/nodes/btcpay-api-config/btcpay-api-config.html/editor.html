@@ -10,31 +10,24 @@
   </div>
 
   <div class="form-row" id="btcpayPairContainer">
+    <label></label>
     <button
       type="button"
       id="btcpayPair"
-      style="padding: 6px 14px;  margin-top: 6px;margin-left: 104px;"
-      class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+      class="red-ui-button">
       Pair client
     </button>
   </div>
 
   <div class="form-row">
     <label for="node-config-input-privKey"><i class="fa fa-key"></i> Private Key</label>
-    <input type="text" id="node-config-input-privKey" readonly>
-    <!-- <div id="btcpayGenKeyContainer">
-      <button
-        type="button"
-        id="btcpayGenKey"
-        style="padding: 6px 14px;  margin-top: 6px;margin-left: 104px;"
-        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-        Generate New
-      </button>
-    </div> -->
+    <input type="password" id="node-config-input-privKey" style="padding-right: 36px" readonly>
+    <span data-toggle="#node-config-input-privKey" class="fa fa-fw fa-eye btcpay-toggle-password" style="width: 0; transform: translate(-30px, 0);"></span>
   </div>
   <div class="form-row">
     <label for="node-config-input-token"><i class="fa fa-check-circle-o"></i> Token</label>
-    <input type="text" id="node-config-input-token" readonly>
+    <input type="password" id="node-config-input-token" style="padding-right: 36px" readonly>
+    <span data-toggle="#node-config-input-token" class="fa fa-fw fa-eye btcpay-toggle-password" style="width: 0; transform: translate(-30px, 0);"></span>
   </div>
 
   <hr/>
