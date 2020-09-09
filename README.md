@@ -1,4 +1,4 @@
-# node-red-contrib-btcpay
+# BTCPay Node
 
 A <a href="http://nodered.org" target="_new">Node-RED</a> node to interact with <a href="https://btcpayserver.org/" target="_blank">BTCPay Server</a>.
 
