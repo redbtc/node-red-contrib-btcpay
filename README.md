@@ -65,7 +65,7 @@ More ready-made flows are [available here](https://redbtc.org/flows/).
 
 ## API Reference
 
-BTCPay's API mimics Bitpay's one. The API Reference: https://bitpay.com/api/#rest-api-resources
+BTCPay implements the same API as Bitpay for creating and managing invoices. The API Reference: https://bitpay.com/api/#rest-api-resources
 
 ## Donate 💝
 
