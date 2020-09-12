@@ -59,6 +59,10 @@ This example implements an IPN handler. It checks if the invoice status is eithe
 
 Flow json for Node-RED: [btcpay-ipn-handler.json](examples/btcpay-ipn-handler.json)
 
+### More Examples
+
+More ready-made flows are [available here](https://redbtc.org/flows/).
+
 ## API Reference
 
 BTCPay's API mimics Bitpay's one. The API Reference: https://bitpay.com/api/#rest-api-resources
