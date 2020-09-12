@@ -30,7 +30,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^5.0.2",
+    "@rollup/plugin-typescript": "^6.0.0",
     "@types/bs58": "^4.0.1",
     "@types/elliptic": "^6.4.12",
     "@types/express": "^4.17.7",
