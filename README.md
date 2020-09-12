@@ -63,6 +63,10 @@ Flow json for Node-RED: [btcpay-ipn-handler.json](examples/btcpay-ipn-handler.js
 
 BTCPay's API mimics Bitpay's one. The API Reference: https://bitpay.com/api/#rest-api-resources
 
+## Donate 💝
+
+If you want to support this free open-source project, you can [donate by clicking this link](https://donate.alexkaul.com/btcpay-node) 
+
 ## Developing Node
 
 Build & Test in Watch mode:
