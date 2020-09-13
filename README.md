@@ -1,6 +1,6 @@
 # BTCPay Nodes
 
-<a href="http://nodered.org" target="_new">Node-RED</a> nodes to interact with <a href="https://btcpayserver.org/" target="_blank">BTCPay Server</a>.
+<a href="https://nodered.org" target="_blank">Node-RED</a> nodes to interact with <a href="https://btcpayserver.org/" target="_blank">BTCPay Server</a>.
 
 ## Install
 
@@ -69,7 +69,7 @@ BTCPay implements the same API as Bitpay for creating and managing invoices. The
 
 ## Donate 💝
 
-If you want to support this free open-source project, you can [donate by clicking this link](https://donate.alexkaul.com/btcpay-node) 
+If you want to support this free open-source project, you can [donate by clicking this link](https://donate.alexkaul.com/btcpay-node)
 
 ## Developing Node
 
