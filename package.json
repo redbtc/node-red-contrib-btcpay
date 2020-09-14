@@ -17,7 +17,17 @@
     "lint:fix": "prettier --ignore-path .eslintignore --write '**/*.{js,ts,md}'; eslint --ext .js,.ts . --fix"
   },
   "author": "Alex Kaul",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexk111/node-red-contrib-btcpay"
+  },
   "license": "MIT",
+  "keywords": [
+    "node-red",
+    "btcpay",
+    "btcpayserver",
+    "bitcoin"
+  ],
   "node-red": {
     "nodes": {
       "btcpay-api": "./dist/nodes/btcpay-api/btcpay-api.js",
