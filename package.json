@@ -37,7 +37,7 @@
   "dependencies": {
     "bs58": "^4.0.1",
     "elliptic": "^6.5.3",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^6.0.0",
