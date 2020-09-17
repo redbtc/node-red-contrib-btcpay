@@ -32,7 +32,8 @@
   "node-red": {
     "nodes": {
       "btcpay-api": "./dist/nodes/btcpay-api/btcpay-api.js",
-      "btcpay-api-config": "./dist/nodes/btcpay-api-config/btcpay-api-config.js"
+      "btcpay-api-config": "./dist/nodes/btcpay-api-config/btcpay-api-config.js",
+      "btcpay-ipn": "./dist/nodes/btcpay-ipn/btcpay-ipn.js"
     }
   },
   "dependencies": {
