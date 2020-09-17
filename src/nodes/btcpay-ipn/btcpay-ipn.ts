@@ -86,7 +86,7 @@ const nodeInit: NodeInitializer = (RED): void => {
             payload: resData,
           };
           this.send(msg);
-          res.status(200).send("ok");
+          res.status(200).end();
         } catch (e) {
           this.status(statuses.error);
           res.status(500).send("could not process the notification");
