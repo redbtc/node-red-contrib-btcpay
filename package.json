@@ -20,7 +20,7 @@
   "author": "Alex Kaul",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexk111/node-red-contrib-btcpay"
+    "url": "https://github.com/redbtc/node-red-contrib-btcpay"
   },
   "license": "MIT",
   "keywords": [
