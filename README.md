@@ -12,7 +12,10 @@ npm install --save node-red-contrib-btcpay
 
 ## Usage
 
-This is a BTCPay API client node. It makes API requests by sending `msg.payload` data to the specified API endpoint and outputs the response data as `msg.payload`.
+This set provides 2 nodes:
+
+- `btcpay-api` - a BTCPay API client node. It makes API requests by sending `msg.payload` data to the specified API endpoint and outputs the response data as `msg.payload`.
+- `btcpay-ipn` - a BTCPay IPN listener node. It listens to BTCPay Instant Payment Notifications and outputs the invoice object as the `msg.payload`.
 
 ### Configuration
 
@@ -37,11 +40,19 @@ Now you need to pair the client with your BTCPay store:
 9. Click on `Pair client` - the private key and token fields will be automatically filled with your api credentials
 10. Push `Update`
 
-### Making requests
+### Making API requests
 
-To make requests using the BTCPay API node, set the http method and the path to the API endpoint the node will call. These can be either specified in the node settings, or provided in `msg.method` (if the method is "via msg.method") and in `msg.path` (if the path is empty). The request body is the data in `msg.payload`.
+To make requests using the `btcpay-api` node, set the http method and the url path to the API endpoint the node will call. These can be either specified in the node settings, or provided in `msg.method` (if the method is "via msg.method") and in `msg.path` (if the path is empty). The request body is the data in `msg.payload`.
 
 After executing a request the node returns a message with the response data set to `msg.payload`.
+
+### Handling Instant Payment Notifications (IPN)
+
+To receive Instant Payment Notifications with the `btcpay-ipn` node, set the url path the IPN listener will listen to notifications on.
+
+When BTCPay Server sends a notification to the IPN listener url, it will trigger the node output with the invoice object set to `msg.payload`. _Note_: as the incoming data cannot be trusted, the node fetches the invoice data via API before the output.
+
+## Examples
 
 ### Creating Invoices
 
@@ -53,7 +64,7 @@ Flow json for Node-RED: [btcpay-invoice-creator.json](examples/btcpay-invoice-cr
 
 ### Handling Instant Payment Notifications (IPN)
 
-This example implements an IPN handler. It checks if the invoice status is either "confirmed" or "complete" and outputs the invoice data to Debug window. As the incoming data cannot be trusted, it first fetches the invoice data via API.
+This example implements a simple IPN handler which outputs the data of confirmed and complete invoices to Debug window.
 
 ![BTCPay IPN Handler](examples/btcpay-ipn-handler.png)
 
