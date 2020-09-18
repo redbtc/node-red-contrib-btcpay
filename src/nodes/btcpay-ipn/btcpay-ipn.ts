@@ -46,7 +46,7 @@ const nodeInit: NodeInitializer = (RED): void => {
       return;
     }
 
-    if (!config.url) {
+    if (!config.path) {
       this.status(statuses.misconfigured);
       return;
     }
@@ -59,9 +59,9 @@ const nodeInit: NodeInitializer = (RED): void => {
 
     const btcpayClient = clientNode.client;
 
-    let url = config.url;
-    if (url[0] !== "/") {
-      url = "/" + url;
+    let path = config.path;
+    if (path[0] !== "/") {
+      path = "/" + path;
     }
 
     const errorHandler: ErrorRequestHandler = (err, _req, res, _next): void => {
@@ -110,7 +110,7 @@ const nodeInit: NodeInitializer = (RED): void => {
     });
 
     // add listener
-    RED.httpNode.post(url, jsonParser, postHandler, errorHandler);
+    RED.httpNode.post(path, jsonParser, postHandler, errorHandler);
 
     this.on("close", () => {
       // remove listener(s)
@@ -122,7 +122,7 @@ const nodeInit: NodeInitializer = (RED): void => {
       }[]).forEach((route, i, routes) => {
         if (
           route.route &&
-          route.route.path === url &&
+          route.route.path === path &&
           route.route.methods.post
         ) {
           routes.splice(i, 1);

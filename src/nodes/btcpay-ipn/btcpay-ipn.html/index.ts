@@ -8,7 +8,7 @@ RED.nodes.registerType<BtcpayIpnEditorNodeProperties>("btcpay-ipn", {
   color: "#CEDC21",
   defaults: {
     client: { value: "", type: "btcpay-api-config", required: true },
-    url: { value: "", required: true },
+    path: { value: "", required: true },
     name: { value: "" },
   },
   inputs: 0,
@@ -19,19 +19,19 @@ RED.nodes.registerType<BtcpayIpnEditorNodeProperties>("btcpay-ipn", {
     if (this.name) {
       return this.name;
     }
-    if (this.url) {
-      let url = RED.settings.httpNodeRoot || "";
-      if (url.slice(-1) !== "/") {
-        url = url + "/";
+    if (this.path) {
+      let path = RED.settings.httpNodeRoot || "";
+      if (path.slice(-1) !== "/") {
+        path = path + "/";
       }
-      if (this.url.charAt(0) === "/") {
-        url += this.url.slice(1);
+      if (this.path.charAt(0) === "/") {
+        path += this.path.slice(1);
       } else {
-        url += this.url;
+        path += this.path;
       }
-      return url;
+      return path;
     } else {
-      return "Notification";
+      return "IPN";
     }
   },
   oneditprepare: function () {
@@ -40,20 +40,20 @@ RED.nodes.registerType<BtcpayIpnEditorNodeProperties>("btcpay-ipn", {
       root = root.slice(0, -1);
     }
     if (root == "") {
-      $("#node-input-tip").hide();
+      $("#form-tips").hide();
     } else {
-      $("#node-input-path").html(root);
-      $("#node-input-tip").show();
+      $("#form-tips-path").html(root);
+      $("#form-tips").show();
     }
   },
   oneditsave: function () {
-    let val = $("#node-input-url").val()?.toString() || "";
+    let val = $("#node-input-path").val()?.toString() || "";
     val = val.trim();
     if (val.length > 0) {
       if (val.substr(0, 1) !== "/") {
         val = "/" + val;
       }
     }
-    $("#node-input-url").val(val);
+    $("#node-input-path").val(val);
   },
 });
