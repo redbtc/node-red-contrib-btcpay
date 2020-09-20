@@ -37,6 +37,7 @@
     }
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bs58": "^4.0.1",
     "elliptic": "^6.5.3",
     "node-fetch": "^2.6.1"
