@@ -34,11 +34,13 @@ Now you need to pair the client with your BTCPay store:
 3. Leave PublicKey blank
 4. Request pairing
 5. Copy pairing code
-6. Open the client configuration in BTCPay-API node on your Node-RED
-7. Enter the https URL to your BTCPay Server instance
-8. Paste the pairing code
-9. Click on `Pair client` - the private key and token fields will be automatically filled with your api credentials
-10. Push `Update`
+6. Open your Node-RED instance
+7. Drag & drop the `btcpay api` node from the palette to the workspace and double-click on it, to open the node editor
+8. In the `Client` dropdown menu pick the `Add New btcpay-api-config` option and press the pencil button at the right to add a new API configuration
+9. Enter the https URL to your BTCPay Server instance
+10. Paste the pairing code you copied on step 5
+11. Click the `Pair client` button - the private key and token fields will be automatically filled with your api credentials
+12. Push `Update`
 
 ### Making API requests
 
