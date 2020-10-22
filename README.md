@@ -103,6 +103,8 @@ Build & Test in Watch mode:
 yarn dev
 ```
 
+## Testing Node Set in Node-RED
+
 [Read Node-RED docs](https://nodered.org/docs/creating-nodes/first-node#testing-your-node-in-node-red) on how to install the dev-version of the node into your local Node-RED runtime.
 
 ## License
